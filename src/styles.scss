@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@laylazi/bootstrap-rtl/dist/css/bootstrap-rtl.min.css';
+@import "~bootswatch/dist/minty/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+.ltr {
+    direction: ltr;
+}

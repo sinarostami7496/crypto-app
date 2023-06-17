@@ -1,8 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@laylazi/bootstrap-rtl/dist/css/bootstrap-rtl.min.css';
+@import "~@laylazi/bootstrap-rtl/dist/css/bootstrap-rtl.min.css";
 @import "~bootswatch/dist/minty/bootstrap.min.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "./assets/fonts/fontiran-vazir.css";
+
+$font-family: Vazir;
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+ul,
+li,
+span,
+div {
+    font-family: $font-family;
+}
+
+body {
+    background-color: #F4F7FB;
+}
+
+.card {
+    --bs-card-border-color: var(--bs-border-color);
+}
 
 .ltr {
     direction: ltr;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }

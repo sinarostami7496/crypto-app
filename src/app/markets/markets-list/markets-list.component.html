@@ -1,0 +1,56 @@
+<div class="container py-3">
+
+  <h4 class="py-4">قیمت ارزهای دیجیتال | بازارها</h4>
+
+  <div class="card">
+    <div class="d-flex p-3 align-items-center">
+      <i class="fa fa-star" [ngClass]="{'text-warning': onlyFavorites}" (click)="onlyFavorites = !onlyFavorites"></i>
+
+      <div class="col-3">
+        <input placeholder="جستجوی کوین ..." type="text" class="form-control" [(ngModel)]="searchSymbol">
+      </div>
+    </div>
+
+    <div class="table-responsive mt-3">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" width="40"></th>
+            <th scope="col">کوین</th>
+            <th scope="col">آخرین قیمت</th>
+            <th scope="col">تغییرات (24h)</th>
+            <th scope="col">حجم معاملات (24h)</th>
+            <th scope="col">تغییرات هفتگی</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of markets">
+            <th scope="row">
+              <i [ngClass]="{'text-warning': item.isFavorite}" (click)="addToFavorite(item)" class="fa fa-star ml-2 h6 mb-0 cursor-pointer"></i>
+            </th>
+            <th>
+              <div class="cursor-pointer" [routerLink]="'/markets/' + item.baseAsset + '/details'">
+                <img width="24" [src]="item.baseAsset_svg_icon" alt="" class="ml-2">
+                <span class="text-body small">{{item.quoteAsset}}</span>/<span class="">{{item.baseAsset}}</span>
+              </div>
+            </th>
+            <td class="ltr text-right">
+              {{item.stats.lastPrice | number : '.0-8'}}
+            </td>
+            <td class="ltr text-right" [ngClass]="{'text-success': item.stats['24h_ch'] > 0, 'text-danger': item.stats['24h_ch'] < 0}">
+              {{item.stats['24h_ch']}}
+            </td>
+            <td class="ltr text-right">
+              {{(item.stats['24h_volume'] === '-' ? item.stats['24h_volume'] : (item.stats['24h_volume']| number) )}}</td>
+            <td class="ltr text-right" [ngClass]="{'text-success': item.stats['7d_ch'] > 0, 'text-danger': item.stats['7d_ch'] < 0}">
+              {{item.stats['7d_ch']}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
